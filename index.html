@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090f">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo_copa.png">
+    <title>Copa do Mundo | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=match-center-guided-v1">
+    <link rel="stylesheet" href="team-of-round.css?v=paleta-votacao-v7">
+</head>
+
+<body data-page="dashboard">
+    <div class="app">
+        <header class="container topbar">
+            <div class="brand">
+                <img src="img/logo_copa.png" alt="">
+                <small>Campeonato dos Amigos</small>
+                <h1>Copa do Mundo</h1>
+            </div>
+            <div class="topbar-actions">
+                <a class="btn btn-soft" href="admin.html">Admin</a>
+            </div>
+        </header>
+
+        <nav class="container nav" aria-label="Navegação principal">
+            <a class="active" href="index.html">Dashboard</a>
+            <a href="classificacao.html">Classificação</a>
+            <a href="artilheiros.html">Artilheiros</a>
+            <a href="assistencias.html">Assistências</a>
+            <a href="cartoes.html">Cartões</a>
+            <a href="rodadas.html">Rodadas</a>
+            <a href="time-do-campeonato.html">Time do Campeonato</a>
+        </nav>
+
+        <main class="container page-grid dashboard-grid dashboard-grid-modern">
+            <a class="panel clickable dashboard-hero" href="rodadas.html">
+                <div class="panel-head">
+                    <h2 class="title-big">Próxima rodada</h2>
+                    <span class="round-pill">Agenda</span>
+                </div>
+                <div id="dashboard-proxima-rodada"></div>
+            </a>
+
+            <a class="panel clickable" href="classificacao.html">
+                <div class="panel-head">
+                    <h2 class="title-big">Classificação</h2>
+                    <span class="round-pill">Ver tabela</span>
+                </div>
+                <div id="dashboard-classificacao"></div>
+            </a>
+
+            <section class="panel clickable dashboard-goals-card" data-dashboard-link="artilheiros.html">
+                <div class="panel-head">
+                    <h2>Gols e assistências</h2>
+                    <span class="round-pill">Destaques</span>
+                </div>
+                <div id="dashboard-gols-assistencias"></div>
+            </section>
+
+            <a class="panel clickable" href="cartoes.html">
+                <div class="panel-head">
+                    <h2>Cartões</h2>
+                    <span class="round-pill">Disciplina</span>
+                </div>
+                <div id="dashboard-cartoes"></div>
+            </a>
+
+            <a class="panel clickable" href="rodadas.html">
+                <div class="panel-head">
+                    <h2>Rodada passada</h2>
+                    <span class="round-pill">Resultados</span>
+                </div>
+                <div id="dashboard-rodadas-anteriores"></div>
+            </a>
+
+            <section class="panel dashboard-team-of-round-section">
+                <div class="panel-head panel-head-stack panel-head-responsive">
+                    <div>
+                        <h2 class="title-big">Seleção da Rodada</h2>
+                        <p class="muted">Veja a equipe ideal e abra a aba de votação quando ela estiver liberada.</p>
+                    </div>
+                    <div class="segmented team-of-round-dashboard-switch" role="tablist" aria-label="Seleção e votação">
+                        <button class="active" data-tor-view="selection" type="button">Seleção</button>
+                        <button data-tor-view="vote" type="button">Votação</button>
+                    </div>
+                </div>
+
+                <div class="team-of-round-dashboard-pane is-active" data-tor-pane="selection">
+                    <div id="dashboard-team-of-round"></div>
+                </div>
+
+                <div class="team-of-round-dashboard-pane hidden" data-tor-pane="vote">
+                    <div id="dashboard-team-of-round-vote"></div>
+                </div>
+            </section>
+
+            <a class="panel clickable dashboard-championship-link-card" href="time-do-campeonato.html">
+                <div class="panel-head panel-head-stack panel-head-responsive">
+                    <div>
+                        <h2 class="title-big">Time do Campeonato</h2>
+                        <p class="muted">Acompanhe o time ideal acumulado e o ranking completo da temporada.</p>
+                    </div>
+                    <span class="round-pill">Ver página completa</span>
+                </div>
+                <div id="dashboard-time-campeonato-link"></div>
+            </a>
+        </main>
+
+        <div class="footer-space"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js?v=match-center-guided-v1"></script>
+    <script src="team-of-round.js?v=paleta-votacao-v7"></script>
+</body>
+
+</html>

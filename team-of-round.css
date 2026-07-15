@@ -1,0 +1,2233 @@
+    .team-of-round-surface {
+        display: grid;
+        gap: 18px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .team-of-round-toolbar {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 18px;
+    }
+    
+    .team-of-round-pills {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto;
+        margin: 0;
+    }
+    
+    .team-of-round-pill {
+        min-width: 160px;
+        max-width: 190px;
+        text-align: center;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+    }
+    
+    .team-of-round-pill strong {
+        display: block;
+        margin-top: 6px;
+        font-size: 0.98rem;
+        letter-spacing: -0.02em;
+    }
+    
+    .dashboard-grid.dashboard-grid-modern>.dashboard-team-of-round-section {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0;
+        padding: 26px;
+        border-radius: var(--radius-xl) !important;
+        justify-self: stretch !important;
+        align-self: start !important;
+        margin: 0;
+    }
+    
+    .dashboard-team-of-round-section::before {
+        display: none;
+    }
+    
+    .team-of-round-pitch-frame {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        border-radius: 24px;
+    }
+    
+    .team-of-round-pitch {
+        position: relative;
+        width: 100%;
+        min-height: clamp(420px, 48vw, 720px);
+        overflow: hidden;
+        border-radius: 24px;
+        border: 0;
+        background-color: #0d6f54;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        isolation: isolate;
+    }
+    
+    .team-of-round-pitch::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(6, 0, 18, 0.02), rgba(2, 8, 18, 0.12));
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    .team-of-round-guides {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    .team-of-round-guide {
+        position: absolute;
+        left: 0;
+        right: 0;
+        border-top: 1px dashed rgba(255, 255, 255, 0.34);
+    }
+    
+    .team-of-round-guide span {
+        position: absolute;
+        left: 14px;
+        top: -11px;
+        padding: 3px 7px;
+        background: rgba(7, 15, 24, 0.86);
+        font-size: 0.62rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 244, 221, 0.88);
+        border-radius: 10px;
+    }
+    
+    .team-of-round-player {
+        --player-card-width: clamp(74px, 8vw, 108px);
+        --player-photo-height: clamp(56px, 6.8vw, 82px);
+        position: absolute;
+        width: var(--player-card-width);
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+        transition: left 0.35s ease, top 0.35s ease, transform 0.25s ease, opacity 0.25s ease;
+        border-radius: 0 !important;
+        pointer-events: none;
+    }
+    
+    .team-of-round-player.is-goalkeeper {
+        --player-card-width: clamp(78px, 8.5vw, 112px);
+    }
+    
+    .team-of-round-player-figure {
+        position: relative;
+        width: 100%;
+        height: var(--player-photo-height);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 1;
+        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.26));
+        border-radius: 0 !important;
+    }
+    
+    .team-of-round-player-photo {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+        border-radius: 0 !important;
+    }
+    
+    .team-of-round-player-label {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        min-height: 26px;
+        margin-top: -10px;
+        padding: 5px 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: linear-gradient(90deg, #79ffd7, #caff3a);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+        border-radius: 0 !important;
+    }
+    
+    .team-of-round-player-label strong {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: clamp(0.58rem, 0.9vw, 0.74rem);
+        letter-spacing: 0.01em;
+    }
+    
+    .team-of-round-player-label .team-badge,
+    .team-of-round-player-label .team-badge-lg {
+        width: 15px;
+        height: 15px;
+        flex: 0 0 15px;
+    }
+    
+    .team-of-round-player-label .team-badge-fallback {
+        font-size: 0.4rem;
+    }
+    
+    .team-of-round-placeholder .team-of-round-player-figure {
+        display: grid;
+        place-items: center;
+    }
+    
+    .team-of-round-placeholder-dot {
+        width: 30px;
+        height: 30px;
+        border: 1px dashed rgba(255, 255, 255, 0.6);
+        display: grid;
+        place-items: center;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 1rem;
+        font-weight: 800;
+        background: rgba(121, 255, 215, 0.12);
+        border-radius: 10px;
+    }
+    
+    .team-of-round-placeholder .team-of-round-player-label {
+        background: rgba(7, 15, 24, 0.86);
+        border-style: dashed;
+    }
+    
+    .team-of-round-overlay-message {
+        position: absolute;
+        inset: auto 18px 18px;
+        z-index: 1;
+        width: fit-content;
+        max-width: min(100%, 320px);
+        padding: 10px 12px;
+        background: rgba(7, 15, 24, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.88);
+        font-weight: 600;
+        border-radius: 14px;
+    }
+    
+    .team-of-round-empty-note {
+        justify-self: end;
+        text-align: right;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.78);
+    }
+    
+    .team-of-round-admin-layout {
+        gap: 18px;
+    }
+    
+    .team-of-round-slot-groups {
+        display: grid;
+        gap: 14px;
+    }
+    
+    .team-of-round-slot-group {
+        padding: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 14px;
+    }
+    
+    .team-of-round-slot-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .team-of-round-slot-head strong {
+        font-size: 0.95rem;
+    }
+    
+    .team-of-round-slot-head span {
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+    
+    .team-of-round-slot-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+    }
+    
+    .team-of-round-preview-card {
+        overflow: hidden;
+        border-radius: 14px;
+    }
+    
+    #team-of-round-admin-preview {
+        width: 100%;
+    }
+    
+    .team-of-round-admin-preview-frame {
+        width: min(100%, 760px);
+        margin: 0 auto;
+        border-radius: 0;
+    }
+    
+    .team-of-round-admin-preview-frame .team-of-round-pitch {
+        min-height: clamp(300px, 44vw, 500px);
+    }
+    
+    .team-of-round-admin-preview-frame .team-of-round-player {
+        --player-card-width: clamp(70px, 9vw, 94px);
+        --player-photo-height: clamp(50px, 7vw, 72px);
+    }
+    
+    .team-of-round-admin-preview-frame .team-of-round-player.is-goalkeeper {
+        --player-card-width: clamp(74px, 9.4vw, 98px);
+    }
+    
+    .team-of-round-admin-preview-frame .team-of-round-guide span {
+        left: 10px;
+    }
+    
+    .team-of-round-form-muted {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.82rem;
+    }
+    
+    @media (max-width: 980px) {
+        .dashboard-team-of-round-section {
+            width: 100%;
+            max-width: 100%;
+            padding: 22px;
+        }
+        .team-of-round-toolbar {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+            gap: 14px;
+        }
+        .team-of-round-pills {
+            justify-content: center;
+            width: 100%;
+        }
+        .team-of-round-empty-note {
+            justify-self: center;
+            text-align: center;
+        }
+        .team-of-round-pitch {
+            min-height: clamp(340px, 88vw, 560px);
+        }
+    }
+    
+    @media (max-width: 760px) {
+        .team-of-round-pitch {
+            min-height: 520px;
+        }
+        .team-of-round-guide span {
+            left: 8px;
+            font-size: 0.54rem;
+            padding: 3px 5px;
+        }
+        .team-of-round-player {
+            --player-card-width: clamp(66px, 18vw, 88px);
+            --player-photo-height: clamp(46px, 15vw, 66px);
+        }
+        .team-of-round-player.is-goalkeeper {
+            --player-card-width: clamp(68px, 19vw, 92px);
+        }
+        .team-of-round-player-label {
+            min-height: 24px;
+            padding: 4px 6px;
+            margin-top: -8px;
+        }
+        .team-of-round-player-label strong {
+            font-size: clamp(0.56rem, 2.4vw, 0.68rem);
+        }
+        .team-of-round-player-label .team-badge,
+        .team-of-round-player-label .team-badge-lg {
+            width: 13px;
+            height: 13px;
+            flex-basis: 13px;
+        }
+        .team-of-round-slot-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    @media (max-width: 520px) {
+        .dashboard-team-of-round-section {
+            padding: 14px;
+        }
+        .team-of-round-pill {
+            min-width: 0;
+            width: 100%;
+        }
+        .team-of-round-pitch {
+            min-height: 620px;
+        }
+        .team-of-round-player {
+            --player-card-width: 68px;
+            --player-photo-height: 62px;
+        }
+        .team-of-round-player.is-goalkeeper {
+            --player-card-width: 72px;
+        }
+        .team-of-round-player-label {
+            width: calc(100% + 8px);
+            margin-left: -4px;
+            margin-top: -6px;
+            min-height: 38px;
+            padding: 4px 5px;
+            display: grid;
+            justify-items: center;
+            gap: 2px;
+        }
+        .team-of-round-player-label strong {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: break-word;
+            line-height: 1.05;
+            font-size: 0.58rem;
+            text-align: center;
+        }
+        .team-of-round-player-label .team-badge,
+        .team-of-round-player-label .team-badge-lg {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-of-round-player-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            /* espaço entre escudo e nome */
+        }
+        .team-of-round-overlay-message {
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            max-width: none;
+        }
+    }
+    
+    @media (max-width: 420px) {
+        .team-of-round-pitch {
+            min-height: 680px;
+        }
+        .team-of-round-player {
+            --player-card-width: 62px;
+            --player-photo-height: 56px;
+        }
+        .team-of-round-player.is-goalkeeper {
+            --player-card-width: 66px;
+        }
+        .team-of-round-player-label {
+            min-height: 36px;
+            padding: 4px;
+        }
+        .team-of-round-player-label strong {
+            font-size: 0.54rem;
+        }
+    }
+    /* ===== Ajustes premium: seleção/votação no dashboard ===== */
+    
+    .team-of-round-dashboard-switch {
+        align-self: flex-start;
+    }
+    
+    .team-of-round-dashboard-switch button {
+        min-width: 132px;
+    }
+    
+    .team-of-round-dashboard-pane {
+        width: 100%;
+        min-width: 0;
+    }
+    
+    .team-of-round-dashboard-pane.hidden {
+        display: none !important;
+    }
+    
+    .team-of-round-surface,
+    .vote-grid,
+    .vote-slot-grid {
+        min-width: 0;
+    }
+    
+    .team-of-round-player.is-goalkeeper {
+        --player-card-width: clamp(82px, 8.8vw, 118px);
+        --player-photo-height: clamp(62px, 7vw, 90px);
+    }
+    
+    .team-of-round-pitch {
+        min-height: clamp(480px, 52vw, 760px);
+    }
+    
+    .vote-slot {
+        border: 1px solid rgba(255, 255, 255, .08);
+    }
+    
+    .vote-option {
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, .03);
+    }
+    
+    @media (max-width: 980px) {
+        .team-of-round-dashboard-switch {
+            width: 100%;
+        }
+        .team-of-round-dashboard-switch button {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        .team-of-round-pitch {
+            min-height: clamp(380px, 88vw, 580px);
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .team-of-round-pitch {
+            min-height: 560px;
+        }
+        .team-of-round-player {
+            --player-card-width: clamp(64px, 18vw, 90px);
+            --player-photo-height: clamp(46px, 15vw, 68px);
+        }
+        .team-of-round-player.is-goalkeeper {
+            --player-card-width: clamp(68px, 19vw, 94px);
+        }
+    }
+    /* ===== fluxo de votacao por modal ===== */
+    /* fluxo principal */
+    
+    .vote-builder-shell {
+        display: grid;
+        gap: 18px;
+    }
+    
+    .vote-builder-card {
+        display: grid;
+        gap: 18px;
+        padding: 20px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        overflow: hidden;
+    }
+    
+    .vote-builder-head {
+        display: grid;
+        gap: 14px;
+    }
+    
+    .vote-builder-head h3 {
+        margin: 4px 0 8px;
+        font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+        letter-spacing: -0.03em;
+    }
+    
+    .vote-builder-head p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.55;
+    }
+    
+    .vote-builder-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .vote-builder-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff4dd;
+        font-weight: 800;
+        font-size: 0.88rem;
+    }
+    
+    .vote-pitch-frame {
+        border-radius: 24px;
+        overflow: hidden;
+    }
+    
+    .team-of-round-vote-pitch {
+        min-height: clamp(520px, 58vw, 780px);
+    }
+    /* cards das posições no campo */
+    
+    .team-of-round-vote-node {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: clamp(108px, 13vw, 156px);
+        border: 0;
+        background: transparent;
+        padding: 0;
+        display: grid;
+        gap: 6px;
+        text-align: left;
+        color: #fff;
+        cursor: pointer;
+        z-index: 3;
+    }
+    
+    .team-of-round-vote-node.is-goalkeeper {
+        width: clamp(116px, 14vw, 168px);
+    }
+    
+    .team-of-round-vote-node:disabled {
+        cursor: default;
+    }
+    
+    .team-of-round-vote-node-kicker {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        padding: 5px 10px;
+        border-radius: 999px;
+        background: rgba(7, 15, 24, 0.86);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        font-size: 0.62rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+    
+    .team-of-round-vote-node-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8px;
+        align-items: center;
+        padding: 9px 10px;
+        border-radius: 16px;
+        background: rgba(7, 15, 24, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 16px 24px rgba(0, 0, 0, 0.22);
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    
+    .team-of-round-vote-node:not(:disabled):hover .team-of-round-vote-node-card,
+    .team-of-round-vote-node:not(:disabled):focus-visible .team-of-round-vote-node-card {
+        transform: translateY(-2px);
+        background: rgba(10, 24, 36, 0.96);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .team-of-round-vote-node-figure {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.08);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        flex: 0 0 36px;
+    }
+    
+    .team-of-round-vote-node-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .team-of-round-vote-node-plus {
+        font-size: 1rem;
+        font-weight: 900;
+        color: #fff4dd;
+        line-height: 1;
+    }
+    
+    .team-of-round-vote-node-copy {
+        min-width: 0;
+        display: grid;
+        gap: 2px;
+    }
+    
+    .team-of-round-vote-node-copy strong,
+    .team-of-round-vote-node-copy small {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .team-of-round-vote-node-copy strong {
+        font-size: 0.8rem;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+    }
+    
+    .team-of-round-vote-node-copy small {
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 0.68rem;
+        line-height: 1.1;
+    }
+    
+    .team-of-round-vote-node-action {
+        grid-column: 1 / -1;
+        justify-self: center;
+        font-size: 0.68rem;
+        font-weight: 800;
+        color: #fff4dd;
+        line-height: 1;
+    }
+    
+    .team-of-round-vote-node.is-filled .team-of-round-vote-node-card {
+        background: rgba(8, 20, 32, 0.94);
+    }
+    
+    .vote-builder-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    
+    .vote-builder-progress {
+        display: grid;
+        gap: 4px;
+    }
+    
+    .vote-builder-progress strong {
+        font-size: 1.1rem;
+        letter-spacing: -0.03em;
+    }
+    
+    .vote-builder-progress span,
+    .vote-builder-status {
+        color: rgba(255, 255, 255, 0.76);
+    }
+    
+    .vote-builder-actions {
+        justify-content: flex-end;
+    }
+    
+    .vote-builder-status {
+        min-height: 22px;
+        font-size: 0.92rem;
+    }
+    /* modal */
+    
+    .vote-modal-overlay {
+        --vote-modal-offset-top: 24px;
+        --vote-modal-bottom-gap: max(24px, calc(16px + env(safe-area-inset-bottom)));
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        padding: 24px 16px var(--vote-modal-bottom-gap);
+        background: rgba(8, 6, 18, 0.62);
+        backdrop-filter: blur(6px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior-y: auto;
+        -webkit-overflow-scrolling: touch;
+        pointer-events: auto;
+        touch-action: manipulation;
+    }
+    
+    .vote-modal-shell {
+        width: min(100%, 760px);
+        height: auto;
+        max-height: min(88dvh, 820px);
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        margin: 0 auto;
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(12, 18, 30, 0.99), rgba(4, 8, 15, 0.99));
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 28px 72px rgba(0, 0, 0, 0.42);
+        overscroll-behavior: auto;
+        touch-action: auto;
+    }
+
+    .vote-modal-shell,
+    .vote-modal-head,
+    .vote-modal-list,
+    .vote-modal-actions,
+    .vote-player-option,
+    .vote-player-option *,
+    .vote-modal-head .btn,
+    .vote-modal-actions .btn {
+        pointer-events: auto;
+    }
+
+    .vote-player-option,
+    .vote-modal-head .btn,
+    .vote-modal-actions .btn {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .vote-modal-shell {
+        position: relative;
+        z-index: 10000;
+    }
+    
+    .vote-modal-head {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px 24px 18px;
+        background: linear-gradient(180deg, rgba(14, 25, 38, 0.99), rgba(7, 15, 24, 0.99));
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .vote-modal-head h3 {
+        margin: 4px 0 6px;
+        font-size: clamp(1.25rem, 3vw, 1.65rem);
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+    }
+    
+    .vote-modal-head p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.74);
+        line-height: 1.45;
+    }
+    
+    .vote-modal-list {
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: pan-y;
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 18px 24px 22px;
+        scrollbar-gutter: stable;
+    }
+    
+    .vote-player-option {
+        display: grid;
+        grid-template-columns: auto 46px minmax(0, 1fr);
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .vote-player-option:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.14);
+        transform: translateY(-1px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
+    }
+    
+    .vote-player-option input {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        pointer-events: auto;
+        accent-color: #79ffd7;
+        flex: 0 0 18px;
+    }
+    
+    .vote-player-option-photo {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        object-fit: cover;
+    }
+    
+    .vote-player-option-copy {
+        min-width: 0;
+        display: grid;
+        gap: 4px;
+    }
+    
+    .vote-player-option-copy strong,
+    .vote-player-option-copy small {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .vote-player-option-copy strong {
+        font-size: 0.96rem;
+        line-height: 1.15;
+    }
+    
+    .vote-player-option-copy small {
+        color: rgba(255, 255, 255, 0.74);
+        line-height: 1.15;
+    }
+    
+    .vote-player-option.is-selected {
+        background: linear-gradient(135deg, rgba(121, 255, 215, 0.22), rgba(202, 255, 58, 0.13));
+        border-color: rgba(202, 255, 58, 0.66);
+        box-shadow: 0 0 0 1px rgba(121, 255, 215, 0.20) inset;
+    }
+    
+    .vote-modal-actions {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 18px 24px 22px;
+        background: rgba(4, 8, 15, 0.98);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    
+    .vote-modal-head .btn {
+        min-height: 46px;
+        padding-inline: 18px;
+        border-radius: 16px;
+        white-space: nowrap;
+    }
+
+    .vote-modal-actions .btn {
+        border-radius: 16px;
+    }
+
+    .vote-modal-actions .btn + .btn {
+        min-width: 200px;
+    }
+
+    @media (max-width: 640px) {
+        .vote-modal-head .btn {
+            width: auto;
+            flex: 0 0 auto;
+            align-self: flex-start;
+        }
+
+        .vote-modal-head > div {
+            min-width: 0;
+            flex: 1 1 auto;
+        }
+
+        .vote-modal-head h3 {
+            margin-bottom: 8px;
+            font-size: 1.9rem;
+            line-height: 1;
+        }
+
+        .vote-modal-head p {
+            font-size: 0.98rem;
+            line-height: 1.4;
+        }
+    }
+
+    .vote-modal-list::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .vote-modal-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+    }
+    
+    .vote-modal-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    /* tablet */
+    
+    @media (max-width: 980px) {
+        .team-of-round-vote-pitch {
+            min-height: 760px;
+        }
+        .team-of-round-vote-node {
+            width: 72px;
+            gap: 4px;
+        }
+        .team-of-round-vote-node.is-goalkeeper {
+            width: 78px;
+        }
+        .team-of-round-vote-node-card {
+            padding: 8px 9px;
+        }
+        .team-of-round-vote-node-copy strong {
+            font-size: 0.76rem;
+        }
+        .team-of-round-vote-node-copy small,
+        .team-of-round-vote-node-action {
+            font-size: 0.66rem;
+        }
+    }
+    /* mobile */
+    
+    @media (max-width: 640px) {
+        .vote-builder-card {
+            padding: 16px;
+            border-radius: 20px;
+        }
+        .team-of-round-vote-pitch {
+            min-height: 760px;
+        }
+        .team-of-round-vote-node {
+            width: 72px;
+            gap: 4px;
+        }
+        .team-of-round-vote-node.is-goalkeeper {
+            width: 78px;
+        }
+        .team-of-round-vote-node-kicker {
+            font-size: 0.5rem;
+            padding: 4px 6px;
+        }
+        .team-of-round-vote-node-card {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+            gap: 4px;
+            padding: 7px 6px;
+            border-radius: 14px;
+        }
+        .team-of-round-vote-node-figure {
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+        }
+        .team-of-round-vote-node-copy strong,
+        .team-of-round-vote-node-copy small {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
+            word-break: break-word;
+        }
+        .team-of-round-vote-node-copy strong {
+            font-size: 0.66rem;
+            line-height: 1.05;
+        }
+        .team-of-round-vote-node-copy small {
+            font-size: 0.58rem;
+            line-height: 1.05;
+        }
+        .team-of-round-vote-node-action {
+            justify-self: center;
+            font-size: 0.58rem;
+        }
+        .vote-builder-footer {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .vote-builder-actions {
+            width: 100%;
+        }
+        .vote-builder-actions .btn {
+            flex: 1 1 100%;
+        }
+        .vote-modal-overlay {
+            align-items: end;
+            padding: 12px 10px calc(10px + env(safe-area-inset-bottom));
+            background: rgba(8, 6, 18, 0.68);
+        }
+        .vote-modal-shell {
+            width: 100%;
+            max-height: min(86dvh, 760px);
+            border-radius: 24px 24px 18px 18px;
+            margin: 0;
+        }
+        .vote-modal-head {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 16px 12px;
+        }
+        .vote-modal-head h3 {
+            font-size: 1.2rem;
+        }
+        .vote-modal-head p {
+            font-size: 0.9rem;
+            flex-wrap: nowrap;
+        }
+        .vote-modal-head .btn {
+            width: 100%;
+        }
+        .vote-modal-list {
+            padding: 12px 16px 14px;
+            gap: 10px;
+        }
+        .vote-player-option {
+            grid-template-columns: auto 40px minmax(0, 1fr);
+            padding: 11px 12px;
+            gap: 10px;
+            border-radius: 16px;
+        }
+        .vote-player-option-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+        }
+        .vote-player-option-copy strong {
+            font-size: 0.9rem;
+        }
+        .vote-player-option-copy small {
+            font-size: 0.76rem;
+        }
+        .vote-modal-actions {
+            padding: 12px 16px calc(16px + env(safe-area-inset-bottom));
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .vote-modal-actions .btn {
+            width: 100%;
+            min-height: 50px;
+        }
+    }
+    
+    @media (max-width: 420px) {
+        .team-of-round-vote-pitch {
+            min-height: 700px;
+        }
+        .team-of-round-vote-node {
+            width: 62px;
+        }
+        .team-of-round-vote-node.is-goalkeeper {
+            width: 68px;
+        }
+        .team-of-round-vote-node-kicker {
+            font-size: 0.46rem;
+            padding: 4px 5px;
+        }
+        .team-of-round-vote-node-copy strong {
+            font-size: 0.62rem;
+        }
+        .team-of-round-vote-node-copy small,
+        .team-of-round-vote-node-action {
+            font-size: 0.54rem;
+        }
+        .vote-modal-overlay {
+            padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+        }
+        .vote-modal-shell {
+            max-height: min(88dvh, 720px);
+            border-radius: 22px 22px 16px 16px;
+        }
+        .vote-modal-head {
+            padding: 14px 14px 10px;
+        }
+        .vote-modal-list {
+            padding: 10px 14px 12px;
+        }
+        .vote-player-option {
+            grid-template-columns: auto 36px minmax(0, 1fr);
+            padding: 9px 10px;
+            border-radius: 14px;
+        }
+        .vote-player-option-photo {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+        }
+        .vote-modal-actions {
+            padding: 12px 14px calc(14px + env(safe-area-inset-bottom));
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+
+
+    @media (max-width: 640px) {
+  .vote-modal-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .vote-modal-shell {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - 20px);
+    margin: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .vote-modal-head {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px 14px 10px;
+    border-radius: 0;
+  }
+
+  .vote-modal-head > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .vote-modal-head .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .vote-modal-head h3 {
+    margin: 0;
+    font-size: 1.55rem;
+    line-height: 1.05;
+    word-break: break-word;
+  }
+
+  .vote-modal-head p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .vote-modal-head .btn {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 14px;
+  }
+
+  .vote-modal-list {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 10px 14px;
+    display: grid;
+    gap: 10px;
+  }
+
+  .vote-player-option {
+    grid-template-columns: 22px 42px minmax(0, 1fr);
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    align-items: center;
+  }
+
+  .vote-player-option input {
+    width: 18px;
+    height: 18px;
+  }
+
+  .vote-player-option-photo {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .vote-player-option-copy strong {
+    font-size: 0.95rem;
+    line-height: 1.1;
+  }
+
+  .vote-player-option-copy small {
+    font-size: 0.78rem;
+    line-height: 1.1;
+  }
+
+  .vote-modal-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px 14px 14px;
+  }
+
+  .vote-modal-actions .btn {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 14px;
+  }
+}
+
+
+@media (max-width: 380px) {
+  .vote-modal-head {
+    padding: 12px 12px 8px;
+  }
+
+  .vote-modal-head h3 {
+    font-size: 1.35rem;
+  }
+
+  .vote-modal-head p {
+    font-size: 0.86rem;
+  }
+
+  .vote-modal-list {
+    padding: 8px 12px;
+  }
+
+  .vote-modal-actions {
+    padding: 8px 12px 12px;
+  }
+
+  .vote-player-option {
+    grid-template-columns: 20px 38px minmax(0, 1fr);
+    padding: 9px 10px;
+  }
+
+  .vote-player-option-photo {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ===== Refinos pitch WC26 ===== */
+.team-of-round-pitch-frame {
+    border-radius: 28px;
+    padding: 1px;
+    background: linear-gradient(135deg,
+        rgba(123, 45, 255, 0.95),
+        rgba(255, 79, 184, 0.9),
+        rgba(255, 46, 63, 0.9),
+        rgba(255, 122, 33, 0.9),
+        rgba(202, 255, 58, 0.88),
+        rgba(121, 255, 215, 0.95),
+        rgba(37, 85, 255, 0.92));
+    box-shadow: 0 22px 50px rgba(0,0,0,0.30);
+}
+
+.team-of-round-pitch {
+    border-radius: 27px;
+    border: 0;
+    background-color: #0a1320;
+    box-shadow: inset 0 0 0 999px rgba(0,0,0,0.02), 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+.team-of-round-pitch::before {
+    background: linear-gradient(180deg, rgba(8, 13, 23, 0.04), rgba(8, 13, 23, 0.14));
+}
+
+.team-of-round-guide {
+    border-top: 1px dashed rgba(240, 228, 200, 0.52);
+}
+
+.team-of-round-guide span {
+    background: rgba(7, 9, 15, 0.88);
+    color: #f0e4c8;
+    border: 1px solid rgba(121, 255, 215, 0.18);
+}
+
+.team-of-round-player-label {
+    min-height: 30px;
+    padding: 6px 10px;
+    margin-top: -8px;
+    background: linear-gradient(90deg, #7df7d7, #bfff4e);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 14px !important;
+}
+
+.team-of-round-player-label strong {
+    color: #071014;
+    font-family: "Noto Sans", Inter, sans-serif;
+    font-size: clamp(0.64rem, 0.95vw, 0.8rem);
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+
+.team-of-round-placeholder-dot {
+    background: rgba(121, 255, 215, 0.14);
+    border-color: rgba(121, 255, 215, 0.72);
+    color: #ffffff;
+    border-radius: 999px;
+}
+
+.team-of-round-placeholder .team-of-round-player-label {
+    background: rgba(14, 20, 32, 0.86);
+    border-style: dashed;
+}
+
+/* ===== Refino v3 seleção da rodada ===== */
+.team-of-round-pill,
+.team-of-round-pill * {
+    color: #f6f8ff !important;
+}
+
+.team-of-round-pill {
+    background:
+        linear-gradient(180deg, rgba(27, 33, 50, 0.96), rgba(12, 16, 27, 0.96)) padding-box,
+        linear-gradient(135deg, rgba(123,45,255,.85), rgba(255,79,184,.75), rgba(121,255,215,.8)) border-box !important;
+    border: 1px solid transparent !important;
+}
+
+.team-of-round-player-label,
+.team-of-round-player-label * {
+    color: #071014 !important;
+}
+
+.team-of-round-player-label strong {
+    letter-spacing: 0.02em !important;
+    line-height: 1.12 !important;
+}
+
+
+/* ===== Ajuste de paleta e votação por tipo de formação ===== */
+.team-of-round-pitch-frame {
+    background: linear-gradient(135deg,
+        rgba(245, 232, 199, 0.92),
+        rgba(212, 175, 55, 0.88),
+        rgba(141, 21, 58, 0.92),
+        rgba(91, 15, 47, 0.96)) !important;
+}
+
+.team-of-round-player-label {
+    background: linear-gradient(90deg, #8d153a, #5b0f2f) !important;
+    border: 1px solid rgba(245, 232, 199, 0.32) !important;
+    box-shadow: 0 10px 22px rgba(44, 7, 24, 0.34) !important;
+}
+
+.team-of-round-player-label,
+.team-of-round-player-label * {
+    color: #fffaf2 !important;
+}
+
+.team-of-round-player-label .team-badge,
+.team-of-round-player-label .team-badge-lg {
+    background: rgba(255, 250, 242, 0.94);
+    border-radius: 999px;
+}
+
+.team-of-round-guide span,
+.team-of-round-vote-node-kicker {
+    background: rgba(91, 15, 47, 0.88) !important;
+    color: #f5e8c7 !important;
+    border-color: rgba(245, 232, 199, 0.24) !important;
+}
+
+.team-of-round-vote-node-card,
+.vote-builder-card,
+.vote-modal-shell,
+.vote-modal-head,
+.vote-modal-actions {
+    border-color: rgba(245, 232, 199, 0.16) !important;
+}
+
+.team-of-round-vote-node-card {
+    background: rgba(74, 13, 43, 0.88) !important;
+}
+
+.team-of-round-vote-node.is-filled .team-of-round-vote-node-card,
+.team-of-round-vote-node:not(:disabled):hover .team-of-round-vote-node-card,
+.team-of-round-vote-node:not(:disabled):focus-visible .team-of-round-vote-node-card {
+    background: rgba(125, 22, 56, 0.94) !important;
+    border-color: rgba(212, 175, 55, 0.42) !important;
+}
+
+.vote-modal-shell {
+    background: linear-gradient(180deg, rgba(125, 22, 56, 0.99), rgba(74, 13, 43, 0.99)) !important;
+}
+
+.vote-modal-head {
+    background: linear-gradient(180deg, rgba(141, 21, 58, 0.99), rgba(91, 15, 47, 0.98)) !important;
+}
+
+.vote-modal-actions {
+    background: rgba(74, 13, 43, 0.98) !important;
+}
+
+.vote-player-option.is-selected {
+    background: linear-gradient(180deg, rgba(212, 175, 55, 0.24), rgba(181, 138, 58, 0.16)) !important;
+    border-color: rgba(212, 175, 55, 0.62) !important;
+}
+
+/* =========================================================
+   PALETA OFICIAL - VOTACAO DA SELECAO DA RODADA
+   Ajusta a area de votacao para a mesma identidade visual
+   do dashboard: fundo escuro, verde/mint, lima, azul e vermelho.
+   ========================================================= */
+
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-card,
+#dashboard-team-of-round-vote .vote-builder-card {
+    border: 1px solid rgba(121, 255, 215, 0.18);
+    background:
+        radial-gradient(circle at 8% 0%, rgba(121, 255, 215, 0.14), transparent 30%),
+        radial-gradient(circle at 92% 8%, rgba(202, 255, 58, 0.11), transparent 28%),
+        linear-gradient(180deg, rgba(13, 17, 28, 0.96), rgba(7, 9, 15, 0.98));
+    box-shadow: 0 24px 62px rgba(0, 0, 0, 0.38);
+}
+
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-head h3,
+#dashboard-team-of-round-vote .vote-builder-head h3 {
+    color: #f8fbff;
+}
+
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-head p,
+#dashboard-team-of-round-vote .vote-builder-head p,
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-progress span,
+#dashboard-team-of-round-vote .vote-builder-progress span,
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-status,
+#dashboard-team-of-round-vote .vote-builder-status {
+    color: rgba(248, 251, 255, 0.76);
+}
+
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-chip,
+#dashboard-team-of-round-vote .vote-builder-chip {
+    background: rgba(121, 255, 215, 0.10);
+    border-color: rgba(121, 255, 215, 0.22);
+    color: #d9ff3f;
+}
+
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-pitch-frame,
+#dashboard-team-of-round-vote .vote-pitch-frame {
+    border: 1px solid rgba(121, 255, 215, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 18px 46px rgba(0, 0, 0, 0.30);
+}
+
+.team-of-round-vote-node-kicker {
+    background: rgba(16, 19, 29, 0.86);
+    border-color: rgba(202, 255, 58, 0.35);
+    color: #f8fbff;
+    box-shadow: 0 0 0 1px rgba(121, 255, 215, 0.06) inset;
+}
+
+.team-of-round-vote-node-card {
+    background: rgba(16, 19, 29, 0.88);
+    border-color: rgba(121, 255, 215, 0.18);
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.30);
+}
+
+.team-of-round-vote-node:not(:disabled):hover .team-of-round-vote-node-card,
+.team-of-round-vote-node:not(:disabled):focus-visible .team-of-round-vote-node-card {
+    background: rgba(21, 25, 39, 0.96);
+    border-color: rgba(202, 255, 58, 0.46);
+    box-shadow: 0 20px 34px rgba(0, 0, 0, 0.34), 0 0 0 3px rgba(121, 255, 215, 0.08);
+}
+
+.team-of-round-vote-node-figure {
+    background: rgba(121, 255, 215, 0.10);
+    border: 1px solid rgba(121, 255, 215, 0.16);
+}
+
+.team-of-round-vote-node-plus,
+.team-of-round-vote-node-action {
+    color: #d9ff3f;
+}
+
+.team-of-round-vote-node-copy strong {
+    color: #f8fbff;
+}
+
+.team-of-round-vote-node-copy small {
+    color: rgba(248, 251, 255, 0.72);
+}
+
+.team-of-round-vote-node.is-filled .team-of-round-vote-node-card {
+    background: linear-gradient(135deg, rgba(121, 255, 215, 0.22), rgba(37, 85, 255, 0.18));
+    border-color: rgba(121, 255, 215, 0.44);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(202, 255, 58, 0.13) inset;
+}
+
+.vote-modal-overlay {
+    background: rgba(7, 9, 15, 0.72);
+    backdrop-filter: blur(8px);
+}
+
+.vote-modal-shell {
+    background:
+        radial-gradient(circle at 0% 0%, rgba(121, 255, 215, 0.14), transparent 34%),
+        radial-gradient(circle at 100% 0%, rgba(202, 255, 58, 0.11), transparent 32%),
+        linear-gradient(180deg, rgba(16, 19, 29, 0.99), rgba(7, 9, 15, 0.99));
+    border-color: rgba(121, 255, 215, 0.18);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.vote-modal-head {
+    background:
+        linear-gradient(90deg, rgba(121, 255, 215, 0.12), rgba(37, 85, 255, 0.10), rgba(255, 46, 63, 0.08)),
+        rgba(16, 19, 29, 0.98);
+    border-bottom-color: rgba(121, 255, 215, 0.14);
+}
+
+.vote-modal-head h3 {
+    color: #f8fbff;
+}
+
+.vote-modal-head p {
+    color: rgba(248, 251, 255, 0.76);
+}
+
+.vote-modal-list {
+    background: rgba(7, 9, 15, 0.28);
+}
+
+.vote-player-option {
+    background: rgba(255, 255, 255, 0.045);
+    border-color: rgba(121, 255, 215, 0.13);
+}
+
+.vote-player-option:hover {
+    background: rgba(121, 255, 215, 0.08);
+    border-color: rgba(202, 255, 58, 0.34);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+}
+
+.vote-player-option input {
+    accent-color: #79ffd7;
+}
+
+.vote-player-option-copy strong {
+    color: #f8fbff;
+}
+
+.vote-player-option-copy small {
+    color: rgba(248, 251, 255, 0.72);
+}
+
+.vote-player-option.is-selected {
+    background: linear-gradient(135deg, rgba(121, 255, 215, 0.20), rgba(202, 255, 58, 0.12));
+    border-color: rgba(202, 255, 58, 0.62);
+    box-shadow: 0 0 0 1px rgba(121, 255, 215, 0.18) inset, 0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+.vote-modal-actions {
+    background: rgba(7, 9, 15, 0.96);
+    border-top-color: rgba(121, 255, 215, 0.14);
+}
+
+.vote-modal-head .btn,
+.vote-modal-actions .btn {
+    border-color: rgba(121, 255, 215, 0.18);
+}
+
+.vote-modal-actions .btn.btn-primary,
+.vote-modal-actions .btn.btn-green,
+.vote-modal-actions .btn:last-child {
+    background: linear-gradient(90deg, #79ffd7, #caff3a);
+    color: #07090f;
+    border-color: rgba(202, 255, 58, 0.42);
+    box-shadow: 0 14px 28px rgba(121, 255, 215, 0.18);
+}
+
+.vote-modal-actions .btn.btn-primary:hover,
+.vote-modal-actions .btn.btn-green:hover,
+.vote-modal-actions .btn:last-child:hover {
+    filter: brightness(1.04);
+}
+
+.vote-modal-list::-webkit-scrollbar-thumb {
+    background: rgba(121, 255, 215, 0.34);
+}
+
+.vote-modal-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* =========================================================
+   CORRECAO FINAL DA PALETA DA VOTACAO
+   Esta regra fica no fim do arquivo e usa !important para
+   sobrescrever os estilos antigos vinho/rosa da votacao.
+   ========================================================= */
+
+body[data-page="dashboard"] .team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-card,
+body[data-page="index"] .team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-card,
+body[data-page="dashboard"] #dashboard-team-of-round-vote .vote-builder-card,
+body[data-page="index"] #dashboard-team-of-round-vote .vote-builder-card,
+.vote-builder-card {
+    background:
+        radial-gradient(circle at 10% 0%, rgba(121, 255, 215, 0.14), transparent 32%),
+        radial-gradient(circle at 92% 8%, rgba(202, 255, 58, 0.12), transparent 30%),
+        linear-gradient(180deg, rgba(12, 18, 30, 0.97), rgba(4, 8, 15, 0.99)) !important;
+    border: 1px solid rgba(121, 255, 215, 0.20) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+}
+
+.team-of-round-vote-node-kicker {
+    background: linear-gradient(90deg, rgba(121, 255, 215, 0.18), rgba(202, 255, 58, 0.14)) !important;
+    border: 1px solid rgba(121, 255, 215, 0.35) !important;
+    color: #f8fbff !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+}
+
+.team-of-round-vote-node-card {
+    background: linear-gradient(180deg, rgba(14, 22, 36, 0.94), rgba(8, 14, 24, 0.96)) !important;
+    border: 1px solid rgba(121, 255, 215, 0.22) !important;
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.34) !important;
+}
+
+.team-of-round-vote-node:not(:disabled):hover .team-of-round-vote-node-card,
+.team-of-round-vote-node:not(:disabled):focus-visible .team-of-round-vote-node-card {
+    background: linear-gradient(180deg, rgba(18, 30, 46, 0.98), rgba(9, 17, 28, 0.98)) !important;
+    border-color: rgba(202, 255, 58, 0.55) !important;
+    box-shadow: 0 22px 36px rgba(0, 0, 0, 0.38), 0 0 0 3px rgba(121, 255, 215, 0.10) !important;
+}
+
+.team-of-round-vote-node.is-filled .team-of-round-vote-node-card {
+    background: linear-gradient(135deg, rgba(121, 255, 215, 0.26), rgba(34, 90, 255, 0.18)) !important;
+    border-color: rgba(121, 255, 215, 0.55) !important;
+    box-shadow: 0 20px 36px rgba(0, 0, 0, 0.36), inset 0 0 0 1px rgba(202, 255, 58, 0.18) !important;
+}
+
+.team-of-round-vote-node-figure {
+    background: rgba(121, 255, 215, 0.10) !important;
+    border: 1px solid rgba(121, 255, 215, 0.18) !important;
+}
+
+.team-of-round-vote-node-plus,
+.team-of-round-vote-node-action {
+    color: #caff3a !important;
+}
+
+.team-of-round-vote-node-copy strong,
+.team-of-round-vote-node-copy small {
+    color: #f8fbff !important;
+}
+
+.team-of-round-vote-node-copy small {
+    opacity: 0.74 !important;
+}
+
+.vote-modal-overlay {
+    background: rgba(4, 8, 15, 0.74) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.vote-modal-shell {
+    background:
+        radial-gradient(circle at 0% 0%, rgba(121, 255, 215, 0.16), transparent 34%),
+        radial-gradient(circle at 100% 0%, rgba(202, 255, 58, 0.13), transparent 32%),
+        linear-gradient(180deg, rgba(12, 18, 30, 0.99), rgba(4, 8, 15, 0.99)) !important;
+    border: 1px solid rgba(121, 255, 215, 0.22) !important;
+    box-shadow: 0 30px 82px rgba(0, 0, 0, 0.58) !important;
+}
+
+.vote-modal-head {
+    background:
+        linear-gradient(90deg, rgba(121, 255, 215, 0.14), rgba(37, 85, 255, 0.10), rgba(202, 255, 58, 0.07)),
+        rgba(12, 18, 30, 0.98) !important;
+    border-bottom: 1px solid rgba(121, 255, 215, 0.16) !important;
+}
+
+.vote-modal-head h3,
+.vote-modal-head p,
+.vote-player-option-copy strong,
+.vote-player-option-copy small {
+    color: #f8fbff !important;
+}
+
+.vote-modal-head p,
+.vote-player-option-copy small {
+    opacity: 0.76 !important;
+}
+
+.vote-modal-list {
+    background: rgba(4, 8, 15, 0.24) !important;
+}
+
+.vote-player-option {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.035)) !important;
+    border: 1px solid rgba(121, 255, 215, 0.16) !important;
+}
+
+.vote-player-option:hover {
+    background: rgba(121, 255, 215, 0.09) !important;
+    border-color: rgba(202, 255, 58, 0.40) !important;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.26) !important;
+}
+
+.vote-player-option input {
+    accent-color: #79ffd7 !important;
+}
+
+.vote-player-option.is-selected {
+    background: linear-gradient(135deg, rgba(121, 255, 215, 0.22), rgba(202, 255, 58, 0.13)) !important;
+    border-color: rgba(202, 255, 58, 0.66) !important;
+    box-shadow: 0 0 0 1px rgba(121, 255, 215, 0.20) inset, 0 14px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
+.vote-modal-actions {
+    background: rgba(4, 8, 15, 0.98) !important;
+    border-top: 1px solid rgba(121, 255, 215, 0.16) !important;
+}
+
+.vote-modal-head .btn,
+.vote-modal-actions .btn {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #f8fbff !important;
+    border: 1px solid rgba(121, 255, 215, 0.18) !important;
+}
+
+.vote-modal-actions .btn.btn-primary,
+.vote-modal-actions .btn.btn-green,
+.vote-modal-actions .btn:last-child {
+    background: linear-gradient(90deg, #79ffd7, #caff3a) !important;
+    color: #04080f !important;
+    border-color: rgba(202, 255, 58, 0.48) !important;
+    box-shadow: 0 14px 28px rgba(121, 255, 215, 0.20) !important;
+}
+
+.vote-modal-list::-webkit-scrollbar-thumb {
+    background: rgba(121, 255, 215, 0.38) !important;
+}
+
+.vote-modal-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+
+/* =========================================================
+   PALETA DEFINITIVA DA VOTACAO - SEM ROXO/VINHO
+   Aplica direto nos cards da votacao e no modal de escolha.
+   ========================================================= */
+#dashboard-team-of-round-vote,
+#team-of-round-vote-form,
+.vote-builder-shell {
+    --vote-bg-1: rgba(12, 18, 30, 0.98);
+    --vote-bg-2: rgba(4, 8, 15, 0.99);
+    --vote-card: rgba(9, 17, 28, 0.96);
+    --vote-card-2: rgba(14, 26, 40, 0.96);
+    --vote-border: rgba(121, 255, 215, 0.24);
+    --vote-border-strong: rgba(202, 255, 58, 0.56);
+    --vote-text: #f8fbff;
+    --vote-muted: rgba(248, 251, 255, 0.74);
+    --vote-mint: #79ffd7;
+    --vote-lime: #caff3a;
+}
+
+.vote-builder-card,
+.team-of-round-vote-pitch {
+    background-color: var(--vote-bg-2) !important;
+}
+
+.team-of-round-vote-node-kicker,
+.team-of-round-vote-node > span:first-child {
+    background: linear-gradient(90deg, rgba(121, 255, 215, 0.22), rgba(202, 255, 58, 0.16)) !important;
+    border: 1px solid rgba(121, 255, 215, 0.42) !important;
+    color: var(--vote-text) !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28) !important;
+}
+
+.team-of-round-vote-node-card,
+button.team-of-round-vote-node .team-of-round-vote-node-card {
+    background: linear-gradient(180deg, var(--vote-card-2), var(--vote-card)) !important;
+    border: 1px solid var(--vote-border) !important;
+    box-shadow: 0 18px 32px rgba(0, 0, 0, 0.34) !important;
+}
+
+.team-of-round-vote-node-figure,
+.team-of-round-vote-node-card > div:first-child {
+    background: rgba(121, 255, 215, 0.12) !important;
+    border: 1px solid rgba(121, 255, 215, 0.20) !important;
+}
+
+.team-of-round-vote-node-plus,
+.team-of-round-vote-node-action {
+    color: var(--vote-lime) !important;
+}
+
+.team-of-round-vote-node-copy strong,
+.team-of-round-vote-node-copy small {
+    color: var(--vote-text) !important;
+}
+
+.team-of-round-vote-node-copy small {
+    opacity: 0.76 !important;
+}
+
+.vote-modal-overlay {
+    background: rgba(4, 8, 15, 0.78) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+.vote-modal-shell {
+    background:
+        radial-gradient(circle at 0% 0%, rgba(121, 255, 215, 0.15), transparent 34%),
+        radial-gradient(circle at 100% 0%, rgba(202, 255, 58, 0.12), transparent 32%),
+        linear-gradient(180deg, var(--vote-bg-1), var(--vote-bg-2)) !important;
+    border: 1px solid var(--vote-border) !important;
+    box-shadow: 0 30px 82px rgba(0, 0, 0, 0.58) !important;
+}
+
+.vote-modal-head {
+    background: linear-gradient(180deg, rgba(14, 25, 38, 0.99), rgba(7, 15, 24, 0.99)) !important;
+    border-bottom: 1px solid rgba(121, 255, 215, 0.18) !important;
+}
+
+.vote-modal-head h3,
+.vote-modal-head p,
+.vote-player-option-copy strong,
+.vote-player-option-copy small {
+    color: var(--vote-text) !important;
+}
+
+.vote-modal-head p,
+.vote-player-option-copy small {
+    opacity: 0.76 !important;
+}
+
+.vote-modal-list {
+    background: rgba(4, 8, 15, 0.20) !important;
+}
+
+.vote-player-option {
+    background: linear-gradient(180deg, rgba(14, 26, 40, 0.84), rgba(7, 15, 24, 0.90)) !important;
+    border: 1px solid rgba(121, 255, 215, 0.18) !important;
+}
+
+.vote-player-option:hover {
+    background: rgba(121, 255, 215, 0.10) !important;
+    border-color: rgba(202, 255, 58, 0.42) !important;
+}
+
+.vote-player-option input {
+    accent-color: var(--vote-mint) !important;
+}
+
+.vote-player-option.is-selected {
+    background: linear-gradient(135deg, rgba(121, 255, 215, 0.24), rgba(202, 255, 58, 0.14)) !important;
+    border-color: var(--vote-border-strong) !important;
+    box-shadow: 0 0 0 1px rgba(121, 255, 215, 0.22) inset, 0 14px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
+.vote-modal-actions {
+    background: rgba(4, 8, 15, 0.98) !important;
+    border-top: 1px solid rgba(121, 255, 215, 0.18) !important;
+}
+
+.vote-modal-head .btn,
+.vote-modal-actions .btn {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: var(--vote-text) !important;
+    border: 1px solid rgba(121, 255, 215, 0.20) !important;
+}
+
+.vote-modal-actions .btn.btn-primary,
+.vote-modal-actions .btn.btn-green,
+.vote-modal-actions .btn:last-child {
+    background: linear-gradient(90deg, var(--vote-mint), var(--vote-lime)) !important;
+    color: #04080f !important;
+    border-color: rgba(202, 255, 58, 0.48) !important;
+}
+
+
+/* =========================================================
+   PALETA FINAL DA VOTACAO - REFERENCIA VISUAL DAS RODADAS
+   Mantem o campo e os nomes dos atletas no gramado.
+   Ajusta apenas os cards/botoes/modal da votacao.
+   ========================================================= */
+#dashboard-team-of-round-vote,
+#team-of-round-vote-form,
+.vote-builder-shell {
+    --vote-surface: rgba(6, 10, 18, 0.98);
+    --vote-surface-2: rgba(10, 16, 28, 0.98);
+    --vote-surface-3: rgba(13, 22, 36, 0.98);
+    --vote-text: #f5f7fb;
+    --vote-muted: rgba(245, 247, 251, 0.72);
+    --vote-mint: #79ffd7;
+    --vote-lime: #caff3a;
+    --vote-border-soft: rgba(121, 255, 215, 0.22);
+    --vote-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
+    --vote-rainbow: linear-gradient(90deg,
+        #7a2cff 0%,
+        #ff4ea3 18%,
+        #ff4040 36%,
+        #ff8a1f 55%,
+        #d0ff39 78%,
+        #79ffd7 100%);
+}
+
+.team-of-round-dashboard-pane[data-tor-pane="vote"] .vote-builder-card,
+#dashboard-team-of-round-vote .vote-builder-card,
+.vote-builder-card {
+    background:
+        linear-gradient(180deg, rgba(5, 9, 16, 0.97), rgba(8, 12, 22, 0.98)) padding-box,
+        var(--vote-rainbow) border-box !important;
+    border: 1px solid transparent !important;
+    border-radius: 28px !important;
+    box-shadow: var(--vote-shadow) !important;
+}
+
+.vote-builder-head,
+.vote-builder-footer,
+.vote-builder-status,
+.vote-builder-progress {
+    background: transparent !important;
+}
+
+.vote-builder-head h3,
+.vote-builder-progress strong,
+.vote-builder-progress span,
+.vote-builder-status,
+.vote-builder-head p,
+.vote-builder-head .kicker {
+    color: var(--vote-text) !important;
+}
+
+.vote-builder-head p,
+.vote-builder-progress span,
+.vote-builder-status {
+    opacity: 0.78 !important;
+}
+
+.vote-builder-chip {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(121, 255, 215, 0.18) !important;
+    color: var(--vote-text) !important;
+}
+
+.team-of-round-vote-node-kicker,
+.team-of-round-vote-node > span:first-child {
+    background: rgba(18, 29, 48, 0.92) !important;
+    border: 1px solid rgba(121, 255, 215, 0.24) !important;
+    color: #f0e7c8 !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+.team-of-round-vote-node-card,
+button.team-of-round-vote-node .team-of-round-vote-node-card {
+    background:
+        linear-gradient(180deg, rgba(9, 15, 25, 0.97), rgba(8, 13, 22, 0.97)) padding-box,
+        var(--vote-rainbow) border-box !important;
+    border: 1px solid transparent !important;
+    border-radius: 22px !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28) !important;
+}
+
+.team-of-round-vote-node:not(:disabled):hover .team-of-round-vote-node-card,
+.team-of-round-vote-node:not(:disabled):focus-visible .team-of-round-vote-node-card,
+.team-of-round-vote-node.is-filled .team-of-round-vote-node-card {
+    background:
+        linear-gradient(180deg, rgba(11, 18, 29, 0.98), rgba(8, 13, 23, 0.98)) padding-box,
+        var(--vote-rainbow) border-box !important;
+    border-color: transparent !important;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34) !important;
+}
+
+.team-of-round-vote-node-figure,
+.team-of-round-vote-node-card > div:first-child {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+.team-of-round-vote-node-plus,
+.team-of-round-vote-node-action {
+    color: var(--vote-lime) !important;
+}
+
+.team-of-round-vote-node-copy strong,
+.team-of-round-vote-node-copy small {
+    color: var(--vote-text) !important;
+}
+
+.team-of-round-vote-node-copy small {
+    opacity: 0.74 !important;
+}
+
+.vote-builder-actions .btn,
+.vote-modal-head .btn,
+.vote-modal-actions .btn {
+    border-radius: 18px !important;
+}
+
+.vote-builder-actions .btn.btn-primary,
+.vote-modal-actions .btn.btn-primary,
+.vote-modal-actions .btn.btn-green,
+.vote-modal-actions .btn:last-child {
+    background: linear-gradient(90deg, var(--vote-mint), var(--vote-lime)) !important;
+    color: #06111a !important;
+    border: 1px solid rgba(202, 255, 58, 0.30) !important;
+    box-shadow: 0 14px 26px rgba(121, 255, 215, 0.12) !important;
+}
+
+.vote-builder-actions .btn.btn-soft,
+.vote-modal-head .btn,
+.vote-modal-actions .btn:not(.btn-primary):not(.btn-green):not(:last-child) {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: var(--vote-text) !important;
+    border: 1px solid rgba(121, 255, 215, 0.18) !important;
+}
+
+.vote-modal-overlay {
+    background: rgba(2, 6, 12, 0.82) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.vote-modal-shell {
+    background:
+        linear-gradient(180deg, rgba(6, 10, 18, 0.985), rgba(9, 14, 25, 0.985)) padding-box,
+        var(--vote-rainbow) border-box !important;
+    border: 1px solid transparent !important;
+    border-radius: 30px !important;
+    box-shadow: 0 34px 80px rgba(0, 0, 0, 0.54) !important;
+}
+
+.vote-modal-head {
+    background: linear-gradient(180deg, rgba(8, 13, 23, 0.98), rgba(8, 13, 22, 0.94)) !important;
+    border-bottom: 1px solid rgba(121, 255, 215, 0.14) !important;
+}
+
+.vote-modal-head h3,
+.vote-modal-head p,
+.vote-modal-head .kicker,
+.vote-player-option-copy strong,
+.vote-player-option-copy small {
+    color: var(--vote-text) !important;
+}
+
+.vote-modal-head p,
+.vote-player-option-copy small {
+    opacity: 0.74 !important;
+}
+
+.vote-modal-list {
+    background: transparent !important;
+}
+
+.vote-player-option {
+    background:
+        linear-gradient(180deg, rgba(10, 16, 28, 0.94), rgba(7, 12, 22, 0.96)) padding-box,
+        linear-gradient(90deg, rgba(255, 78, 163, 0.55), rgba(255, 138, 31, 0.40), rgba(121, 255, 215, 0.40)) border-box !important;
+    border: 1px solid transparent !important;
+    border-radius: 22px !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+.vote-player-option:hover {
+    background:
+        linear-gradient(180deg, rgba(12, 18, 31, 0.96), rgba(8, 14, 24, 0.98)) padding-box,
+        linear-gradient(90deg, rgba(255, 78, 163, 0.75), rgba(255, 138, 31, 0.55), rgba(121, 255, 215, 0.55)) border-box !important;
+}
+
+.vote-player-option input {
+    accent-color: var(--vote-mint) !important;
+}
+
+.vote-player-option.is-selected {
+    background:
+        linear-gradient(180deg, rgba(14, 22, 36, 0.98), rgba(9, 16, 27, 0.98)) padding-box,
+        linear-gradient(90deg, #79ffd7, #caff3a) border-box !important;
+    border: 1px solid transparent !important;
+    box-shadow: 0 0 0 1px rgba(121, 255, 215, 0.16) inset, 0 16px 30px rgba(0, 0, 0, 0.28) !important;
+}
+
+.vote-modal-actions {
+    background: rgba(5, 10, 18, 0.98) !important;
+    border-top: 1px solid rgba(121, 255, 215, 0.12) !important;
+}
+
+.vote-modal-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(255, 78, 163, 0.62), rgba(121, 255, 215, 0.62)) !important;
+}
+
+.vote-modal-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+
+/* =========================================================
+   AJUSTE FINAL - ETIQUETAS/NOMES DOS ATLETAS EM VERDE
+   Mantem o campo intacto. Remove o roxo/vinho dos nomes.
+   ========================================================= */
+.team-of-round-player-label {
+    background: linear-gradient(90deg, #79ffd7 0%, #caff3a 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 10px 22px rgba(11, 24, 22, 0.26) !important;
+}
+
+.team-of-round-player-label,
+.team-of-round-player-label * {
+    color: #09131a !important;
+}
+
+.team-of-round-player-label strong {
+    color: #09131a !important;
+    letter-spacing: 0.02em !important;
+}
+
+.team-of-round-player-label .team-badge,
+.team-of-round-player-label .team-badge-lg {
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+.team-of-round-placeholder .team-of-round-player-label,
+.team-of-round-player-label.is-empty {
+    background: linear-gradient(90deg, #79ffd7 0%, #caff3a 100%) !important;
+    border-style: solid !important;
+}
+
+
+/* =========================================================
+   AJUSTE DE LEGIBILIDADE - BOTAO DESABILITADO NA VOTACAO
+   ========================================================= */
+.vote-builder-actions .btn:disabled,
+.vote-modal-actions .btn:disabled,
+.vote-modal-head .btn:disabled {
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(245, 247, 251, 0.88) !important;
+    border: 1px solid rgba(121, 255, 215, 0.22) !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+}
+
+.vote-builder-actions .btn.btn-primary:disabled,
+.vote-modal-actions .btn.btn-primary:disabled,
+.vote-modal-actions .btn.btn-green:disabled,
+.vote-modal-actions .btn:last-child:disabled {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(245, 247, 251, 0.90) !important;
+    border: 1px solid rgba(202, 255, 58, 0.24) !important;
+}
+
+
+/* =========================================================
+   AJUSTE FINAL - BOTAO CONFIRMAR COM LEITURA CLARA
+   ========================================================= */
+.vote-builder-actions .btn:disabled,
+.vote-modal-actions .btn:disabled,
+.vote-modal-head .btn:disabled {
+    opacity: 1 !important;
+    background: linear-gradient(180deg, rgba(14, 23, 36, 0.98), rgba(10, 17, 27, 0.98)) !important;
+    color: rgba(245, 247, 251, 0.96) !important;
+    border: 1px solid rgba(121, 255, 215, 0.30) !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.20) !important;
+    cursor: not-allowed !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.22) !important;
+}
+
+.vote-builder-actions .btn.btn-primary:disabled,
+.vote-modal-actions .btn.btn-primary:disabled,
+.vote-modal-actions .btn.btn-green:disabled,
+.vote-modal-actions .btn:last-child:disabled {
+    background: linear-gradient(180deg, rgba(15, 26, 38, 0.98), rgba(10, 18, 28, 0.98)) !important;
+    color: rgba(245, 247, 251, 0.96) !important;
+    border: 1px solid rgba(202, 255, 58, 0.26) !important;
+}

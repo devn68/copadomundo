@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090f">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo_copa.png">
+    <title>Copa do Mundo | Classificação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=match-center-guided-v1">
+</head>
+
+<body data-page="classificacao">
+    <div class="app">
+        <header class="container topbar">
+            <div class="brand">
+                <img src="img/logo_copa.png" alt="">
+                <small>Tabela</small>
+                <h1>Classificação</h1>
+            </div>
+            <div class="topbar-actions"><a class="btn btn-soft" href="index.html">Voltar</a></div>
+        </header>
+
+        <nav class="container nav" aria-label="Navegação principal">
+            <a href="index.html">Dashboard</a>
+            <a class="active" href="classificacao.html">Classificação</a>
+            <a href="artilheiros.html">Artilheiros</a>
+            <a href="assistencias.html">Assistências</a>
+            <a href="cartoes.html">Cartões</a>
+            <a href="rodadas.html">Rodadas</a>
+        </nav>
+
+        <main class="container">
+            <section class="panel">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="title-big">Tabela completa</h2>
+                    </div>
+                    <div class="segmented">
+                        <button class="active" data-view="normal" type="button">Normal</button>
+                        <button data-view="forma" type="button">Forma</button>
+                    </div>
+                </div>
+                <div id="classificacao-content"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js?v=match-center-guided-v1"></script>
+</body>
+
+</html>

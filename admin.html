@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090f">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo_copa.png">
+    <title>Copa do Mundo | Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=match-center-guided-v1">
+    <link rel="stylesheet" href="team-of-round.css?v=paleta-votacao-v7">
+</head>
+
+<body data-page="admin">
+    <div class="app">
+        <header class="container topbar">
+            <div class="brand">
+                <img src="img/logo_copa.png" alt="">
+                <small>Painel administrativo</small>
+                <h1>Administração</h1>
+            </div>
+            <div class="topbar-actions">
+                <a class="btn btn-soft" href="index.html">Dashboard</a>
+            </div>
+        </header>
+
+        <main class="container">
+            <section id="admin-login" class="login-shell">
+                <div class="panel login-card login-card-modern">
+                    <div class="login-header">
+                        <small>Acesso restrito</small>
+                        <h2>Entrar</h2>
+                        <p>Faça login para gerenciar o campeonato.</p>
+                    </div>
+
+                    <form id="login-form" class="login-form-stack">
+                        <div class="field">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" placeholder="admin@campeonato.com" autocomplete="username" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="login-password">Senha</label>
+                            <input type="password" id="login-password" placeholder="Digite sua senha" autocomplete="current-password" required>
+                        </div>
+
+                        <button class="btn btn-primary btn-login-wide" type="submit">Entrar no painel</button>
+                    </form>
+
+                    <div id="login-notice" class="notice hidden"></div>
+                </div>
+            </section>
+
+            <section id="admin-app" class="hidden">
+                <div class="admin-layout admin-layout-modern">
+                    <aside class="admin-menu panel">
+                        <div class="admin-menu-title">
+                            <small>Menu</small>
+                            <strong>Gestão rápida</strong>
+                        </div>
+                        <button class="active" data-admin-view="overview" type="button">Visão geral</button>
+                        <button data-admin-view="rounds" type="button">Rodadas</button>
+                        <button data-admin-view="match-center" type="button">Central da partida</button>
+                        <button data-admin-view="times" type="button">Times</button>
+                        <button data-admin-view="players" type="button">Jogadores</button>
+                        <button data-admin-view="team-of-round" type="button">Seleção da rodada</button>
+                        <button data-admin-view="team-of-championship" type="button">Time do campeonato</button>
+                        <button data-admin-view="images" type="button">Imagens</button>
+                        <button id="logout-btn" class="btn btn-danger" type="button">Sair</button>
+                    </aside>
+
+                    <div class="admin-view">
+                        <section class="panel admin-section" data-admin-section="overview">
+                            <div class="panel-head panel-head-stack">
+                                <div>
+                                    <h2 class="title-big">Visão geral</h2>
+                                    <p class="muted">Cadastre times e jogadores, crie a rodada e registre a partida na Central.</p>
+                                </div>
+                            </div>
+                            <div id="admin-overview"></div>
+                        </section>
+
+                        <section class="panel admin-section hidden" data-admin-section="rounds">
+                            <div class="panel-head panel-head-stack">
+                                <div>
+                                    <h2 class="title-big">Rodadas</h2>
+                                    <p class="muted">Cadastre e organize as rodadas do campeonato.</p>
+                                </div>
+                                <span class="round-pill">Etapa 1</span>
+                            </div>
+                            <div class="admin-dual">
+                                <form id="round-form" class="form-grid admin-form-card">
+                                    <input type="hidden" id="round-id">
+                                    <div class="field">
+                                        <label for="round-title">Nome da rodada</label>
+                                        <input id="round-title" required placeholder="Ex.: Rodada 4">
+                                    </div>
+                                    <div class="field">
+                                        <label for="round-date">Data base</label>
+                                        <input id="round-date" type="date" required>
+                                    </div>
+                                    <div class="field">
+                                        <label for="round-status">Status</label>
+                                        <select id="round-status">
+                      <option value="upcoming">Próxima</option>
+                      <option value="finished">Finalizada</option>
+                    </select>
+                                    </div>
+                                    <div class="inline-actions" style="grid-column: 1 / -1;">
+                                        <button class="btn btn-primary" type="submit">Salvar rodada</button>
+                                        <button class="btn btn-soft" type="button" id="round-form-reset">Limpar</button>
+                                    </div>
+                                </form>
+
+                                <div class="admin-note admin-note-steps">
+                                    <strong>Fluxo</strong>
+                                    <ol>
+                                        <li>Cadastre a rodada.</li>
+                                        <li>Acesse a Central da partida.</li>
+                                        <li>Registre confronto, placar e eventos.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div id="rounds-list" style="margin-top: 18px;"></div>
+                        </section>
+
+                        <section class="panel admin-section hidden" data-admin-section="match-center">
+                            <div class="panel-head panel-head-stack">
+                                <div>
+                                    <h2 class="title-big">Central da partida</h2>
+                                    <p class="muted">Registre rodada, confronto, placar e eventos em um único fluxo.</p>
+                                </div>
+                                <span class="round-pill">Etapa 2</span>
+                            </div>
+
+                            <div class="admin-workspace">
+                                <form id="match-editor-form" class="admin-match-editor">
+                                    <input type="hidden" id="match-editor-id">
+
+                                    <div class="admin-form-card">
+                                        <div class="section-mini-head">
+                                            <h3>Partida</h3>
+                                            <button class="btn btn-soft btn-sm" type="button" id="match-editor-reset">Nova partida</button>
+                                        </div>
+                                        <div class="field">
+                                            <label for="match-editor-picker">Editar partida</label>
+                                            <select id="match-editor-picker"></select>
+                                        </div>
+                                        <div class="form-grid compact-grid">
+                                            <div class="field">
+                                                <label for="match-editor-round">Rodada</label>
+                                                <select id="match-editor-round" required></select>
+                                            </div>
+                                            <div class="field">
+                                                <label for="match-editor-date">Data</label>
+                                                <input id="match-editor-date" type="date" required>
+                                            </div>
+                                            <div class="field">
+                                                <label for="match-editor-home">Time 1</label>
+                                                <select id="match-editor-home" required></select>
+                                            </div>
+                                            <div class="field">
+                                                <label for="match-editor-away">Time 2</label>
+                                                <select id="match-editor-away" required></select>
+                                            </div>
+                                            <div class="field">
+                                                <label for="match-editor-status">Status</label>
+                                                <select id="match-editor-status">
+                          <option value="scheduled">Agendada</option>
+                          <option value="finished">Finalizada</option>
+                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-form-card">
+                                        <div class="section-mini-head">
+                                            <h3>Placar</h3>
+                                            <span class="muted">Ao finalizar, a tabela será atualizada.</span>
+                                        </div>
+                                        <div class="score-editor">
+                                            <div class="field">
+                                                <label for="match-editor-home-score">Gols do time 1</label>
+                                                <input id="match-editor-home-score" type="number" min="0" value="0">
+                                            </div>
+                                            <div class="score-x">x</div>
+                                            <div class="field">
+                                                <label for="match-editor-away-score">Gols do time 2</label>
+                                                <input id="match-editor-away-score" type="number" min="0" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-form-card match-events-shell">
+                                        <div class="match-events-intro">
+                                            <div>
+                                                <h3>Eventos da partida</h3>
+                                                <p class="muted">Ao finalizar e informar o placar, os campos de gols são criados automaticamente por equipe.</p>
+                                            </div>
+                                            <span class="match-events-badge">Cadastro guiado</span>
+                                        </div>
+
+                                        <div id="match-goals-empty-state" class="match-events-empty-state">
+                                            Defina a partida como <strong>Finalizada</strong> e informe o placar para cadastrar os gols.
+                                        </div>
+
+                                        <div id="match-goal-accordions" class="match-team-goals-list hidden" aria-live="polite"></div>
+
+                                        <details id="match-cards-accordion" class="match-event-accordion match-cards-accordion">
+                                            <summary>
+                                                <span class="match-accordion-title">Cartões</span>
+                                                <span id="match-cards-summary" class="match-accordion-count">0 cartões cadastrados</span>
+                                            </summary>
+                                            <div class="match-event-accordion-body">
+                                                <div class="event-builder-section-head cards-section-head">
+                                                    <div>
+                                                        <h4>Cartões da partida</h4>
+                                                        <span>Cadastre amarelos e vermelhos sem sair deste bloco.</span>
+                                                    </div>
+                                                    <button class="btn btn-soft" type="button" id="add-card-event-row">+ Cartão</button>
+                                                </div>
+                                                <div id="match-events-builder-cards" class="event-builder-group cards-event-builder"></div>
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                    <div class="inline-actions admin-submit-row">
+                                        <button class="btn btn-primary" type="submit">Salvar partida</button>
+                                    </div>
+                                </form>
+
+                                <div class="admin-side-panel">
+                                    <div class="admin-note">
+                                        <strong>Como lançar</strong>
+                                        <ol>
+                                            <li>Selecione rodada, data e times.</li>
+                                            <li>Marque a partida como finalizada.</li>
+                                            <li>Informe o placar para gerar os gols.</li>
+                                            <li>Preencha cada equipe e os cartões.</li>
+                                            <li>Salve a partida.</li>
+                                        </ol>
+                                    </div>
+                                    <div id="match-center-list"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="panel admin-section hidden" data-admin-section="times">
+                            <div class="panel-head">
+                                <h2 class="title-big">Times</h2>
+                                <span class="round-pill">Cadastro</span>
+                            </div>
+                            <div class="admin-dual">
+                                <form id="team-form" class="form-grid admin-form-card">
+                                    <input type="hidden" id="team-id">
+                                    <div class="field">
+                                        <label for="team-name">Nome do time</label>
+                                        <input id="team-name" required placeholder="Ex.: Leões FC">
+                                    </div>
+                                    <div class="field">
+                                        <label for="team-logo">Escudo</label>
+                                        <input id="team-logo" type="file" accept="image/*">
+                                    </div>
+                                    <div class="inline-actions" style="grid-column: 1 / -1;">
+                                        <button class="btn btn-primary" type="submit">Salvar time</button>
+                                        <button class="btn btn-soft" type="button" id="team-form-reset">Limpar</button>
+                                    </div>
+                                </form>
+                                <div>
+                                    <div id="teams-list"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="panel admin-section hidden" data-admin-section="players">
+                            <div class="panel-head">
+                                <h2 class="title-big">Jogadores</h2>
+                                <span class="round-pill">Cadastro</span>
+                            </div>
+                            <div class="admin-dual">
+                                <form id="player-form" class="form-grid admin-form-card">
+                                    <input type="hidden" id="player-id">
+                                    <div class="field">
+                                        <label for="player-name">Nome do jogador</label>
+                                        <input id="player-name" required placeholder="Ex.: João Pedro">
+                                    </div>
+                                    <div class="field">
+                                        <label for="player-position">Posição principal</label>
+                                        <select id="player-position" required>
+                      <option value="zagueiro">Zagueiro</option>
+                      <option value="ala">Ala</option>
+                      <option value="meia">Meia</option>
+                      <option value="atacante">Atacante</option>
+                      <option value="goleiro">Goleiro</option>
+                    </select>
+                                    </div>
+                                    <div class="field">
+                                        <label for="player-team">Time</label>
+                                        <select id="player-team" required></select>
+                                    </div>
+                                    <div class="field">
+                                        <label for="player-photo">Foto</label>
+                                        <input id="player-photo" type="file" accept="image/*">
+                                        <input type="hidden" id="player-remove-photo" value="false">
+                                        <small class="muted">A foto pode ser removida sem excluir o cadastro.</small>
+                                    </div>
+                                    <div class="inline-actions" style="grid-column: 1 / -1;">
+                                        <button class="btn btn-primary" type="submit">Salvar jogador</button>
+                                        <button class="btn btn-danger" type="button" id="player-remove-photo-btn">Remover foto</button>
+                                        <button class="btn btn-soft" type="button" id="player-form-reset">Limpar</button>
+                                    </div>
+                                </form>
+                                <div>
+                                    <div id="players-list"></div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+                        <section class="panel admin-section hidden" data-admin-section="team-of-round">
+                            <div class="panel-head panel-head-stack">
+                                <div>
+                                    <h2 class="title-big">Seleção da rodada</h2>
+                                    <p class="muted">Configure rodada, candidatos por tipo de formação, prazo de votação e apuração automática da seleção.</p>
+                                </div>
+                                <span class="round-pill">Dashboard</span>
+                            </div>
+
+                            <div class="admin-workspace team-of-round-admin-layout">
+                                <form id="team-of-round-form" class="admin-match-editor">
+                                    <input type="hidden" id="team-of-round-remove-field-image" value="false">
+
+                                    <div class="admin-form-card">
+                                        <div class="section-mini-head section-mini-head-wrap">
+                                            <div>
+                                                <h3>Configuração principal</h3>
+                                                <p class="muted">Controle status, tipo de formação e imagem fixa do campo.</p>
+                                            </div>
+                                            <span class="round-pill">Preview premium</span>
+                                        </div>
+
+                                        <div class="form-grid compact-grid">
+                                            <div class="field">
+                                                <label for="team-of-round-round">Rodada</label>
+                                                <select id="team-of-round-round"></select>
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="team-of-round-formation">Formação</label>
+                                                <select id="team-of-round-formation">
+                          <option value="2-2-2">2-2-2</option>
+                          <option value="3-2-1">3-2-1</option>
+                          <option value="2-3-1">2-3-1</option>
+                          <option value="1-3-2">1-3-2</option>
+                          <option value="2-1-3">2-1-3</option>
+                        </select>
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="team-of-round-enabled">Status da votação</label>
+                                                <select id="team-of-round-enabled">
+                          <option value="draft">Rascunho</option>
+                          <option value="open">Votação aberta</option>
+                          <option value="closed">Fechada</option>
+                        </select>
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="team-of-round-voting-start">Início da votação</label>
+                                                <input id="team-of-round-voting-start" type="datetime-local">
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="team-of-round-voting-end">Fim da votação</label>
+                                                <input id="team-of-round-voting-end" type="datetime-local">
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="team-of-round-field-image">Imagem/fundo da seleção</label>
+                                                <input id="team-of-round-field-image" type="file" accept="image/*">
+                                                <small class="muted">Se nada for enviado, o campo padrão permanece ativo. Você pode trocar manualmente quando quiser.</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="inline-actions" style="margin-top: 16px;">
+                                            <button class="btn btn-primary" type="submit">Salvar votação</button>
+                                            <button class="btn btn-danger" type="button" id="team-of-round-reset">Zerar configuração</button>
+                                            <button class="btn btn-soft" type="button" id="team-of-round-restore-field">Restaurar campo padrão</button>
+                                            <button class="btn btn-green" type="button" id="team-of-round-finalize">Apurar agora</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-form-card">
+                                        <div class="section-mini-head section-mini-head-wrap">
+                                            <div>
+                                                <h3>Candidatos por tipo de formação</h3>
+                                                <p class="muted">Defina em qual tipo cada atleta disputa na rodada. No meio, alas e meias aparecem juntos para votação.</p>
+                                            </div>
+                                            <span class="round-pill" id="team-of-round-formation-label">2-2-2</span>
+                                        </div>
+                                        <div id="team-of-round-slot-groups" class="team-of-round-slot-groups"></div>
+                                        <div id="team-of-round-vote-summary" class="admin-note" style="margin-top:16px;"></div>
+                                    </div>
+                                </form>
+
+                                <div class="admin-side-panel">
+                                    <div class="admin-note">
+                                        <strong>Fluxo rápido</strong>
+                                        <ol>
+                                            <li>Escolha a rodada.</li>
+                                            <li>Defina a formação e o prazo.</li>
+                                            <li>Marque quem disputa em cada tipo da formação.</li>
+                                            <li>Abra a votação no dashboard.</li>
+                                            <li>Ao encerrar, a seleção é apurada automaticamente.</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="admin-form-card team-of-round-preview-card">
+                                        <div class="section-mini-head section-mini-head-wrap">
+                                            <div>
+                                                <h3>Prévia contida</h3>
+                                                <p class="muted">Responsiva, com largura controlada e sem estourar o layout.</p>
+                                            </div>
+                                        </div>
+                                        <div id="team-of-round-admin-preview"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="panel admin-section hidden" data-admin-section="team-of-championship">
+                            <div class="panel-head panel-head-stack">
+                                <div>
+                                    <h2 class="title-big">Time do Campeonato</h2>
+                                    <p class="muted">Defina a formação do time ideal acumulado e acompanhe a prévia automaticamente.</p>
+                                </div>
+                                <span class="round-pill">Cartola</span>
+                            </div>
+
+                            <div class="admin-workspace championship-admin-layout">
+                                <form id="team-championship-form" class="admin-match-editor">
+                                    <div class="admin-form-card">
+                                        <div class="section-mini-head section-mini-head-wrap">
+                                            <div>
+                                                <h3>Formação</h3>
+                                                <p class="muted">Escolha como o Time do Campeonato será montado na página pública.</p>
+                                            </div>
+                                            <span class="round-pill" id="team-championship-formation-label">2-3-1</span>
+                                        </div>
+
+                                        <div class="form-grid compact-grid">
+                                            <div class="field">
+                                                <label for="team-championship-formation">Formação do time</label>
+                                                <select id="team-championship-formation">
+                                                    <option value="3-2-1">3-2-1</option>
+                                                    <option value="2-3-1" selected>2-3-1</option>
+                                                    <option value="2-2-2">2-2-2</option>
+                                                    <option value="1-3-2">1-3-2</option>
+                                                    <option value="2-1-3">2-1-3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="inline-actions" style="margin-top: 16px;">
+                                            <button class="btn btn-primary" type="submit">Salvar formação</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-form-card">
+                                        <div class="section-mini-head section-mini-head-wrap">
+                                            <div>
+                                                <h3>Resumo da escalação</h3>
+                                                <p class="muted">Os atletas são escolhidos automaticamente pela pontuação total.</p>
+                                            </div>
+                                        </div>
+                                        <div id="team-championship-summary" class="admin-note"></div>
+                                    </div>
+                                </form>
+
+                                <div class="admin-side-panel">
+                                    <div class="admin-note">
+                                        <strong>Como funciona</strong>
+                                        <ol>
+                                            <li>Escolha a formação.</li>
+                                            <li>Salve a configuração.</li>
+                                            <li>O site recalcula automaticamente o time ideal.</li>
+                                            <li>A página pública mostra campo e ranking completos.</li>
+                                        </ol>
+                                    </div>
+
+                                    <div class="admin-form-card team-of-round-preview-card championship-preview-card">
+                                        <div class="section-mini-head section-mini-head-wrap">
+                                            <div>
+                                                <h3>Prévia do campo</h3>
+                                                <p class="muted">Mesmo visual da página pública, adaptado para o painel.</p>
+                                            </div>
+                                        </div>
+                                        <div id="team-championship-admin-preview"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="panel admin-section hidden" data-admin-section="images">
+                            <div class="panel-head">
+                                <h2 class="title-big">Imagens do sistema</h2>
+                                <span class="round-pill">Visual</span>
+                            </div>
+                            <form id="settings-form" class="form-grid">
+                                <div class="field" style="grid-column: 1 / -1;">
+                                    <label for="default-player-image">Imagem padrão do jogador</label>
+                                    <input id="default-player-image" type="file" accept="image/*" disabled>
+                                </div>
+                                <div class="admin-note" style="grid-column: 1 / -1;">A imagem padrão é fixa e não pode ser alterada por esta tela.</div>
+                                <div class="inline-actions" style="grid-column: 1 / -1;">
+                                    <button class="btn btn-primary" type="submit">Entendido</button>
+                                </div>
+                            </form>
+                            <div id="settings-preview" style="margin-top: 18px;"></div>
+                        </section>
+
+                        <div id="admin-notice" class="notice hidden"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="admin-toast-region" class="admin-toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js?v=match-center-guided-v1"></script>
+    <script src="team-of-round.js?v=paleta-votacao-v7"></script>
+</body>
+
+</html>
